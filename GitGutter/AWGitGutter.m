@@ -20,6 +20,7 @@ static AWGitGutter *sharedPlugin;
 
 @interface AWGitGutter()
 @property (nonatomic, strong) NSBundle *bundle;
+@property (nonatomic, strong) id hook;
 @end
 
 @implementation AWGitGutter
@@ -77,13 +78,15 @@ static AWGitGutter *sharedPlugin;
   [self logMethods:[sender object]];
   
   NSLog(@"------------------");
-  [self printViewHierarchy:[sender object]];
+  [self printViewHierarchy:editorScrollView level:0];
   NSLog(@"==================");
+
   
   [editorTextView setAutoresizingMask:NSViewMinXMargin | NSViewMaxXMargin | NSViewWidthSizable | NSViewHeightSizable];
   
   editorTextView.backgroundColor = [NSColor clearColor];
-  editorScrollView.backgroundColor = [NSColor blueColor];
+  editorScrollView.backgroundColor = [NSColor darkGrayColor];
+  
   
   // Create gutter
   CGFloat width = 200;
@@ -104,13 +107,31 @@ static AWGitGutter *sharedPlugin;
   [editorContainerView addSubview:gutterView];
 }
 
-- (void)printViewHierarchy:(id)view {
-  NSLog(@"%@", [view description]);
+- (void)printViewHierarchy:(id)view level:(int)level {
   
+  NSMutableString* indentation = [NSMutableString string];
+  for (int i = 0; i < level; i++) {
+    [indentation appendString:@"    "];
+  }
   
+  NSLog(@"%@ (%@) %@", indentation, [view class], [view description]);
+  
+  if ([view isMemberOfClass:[NSClassFromString(@"DVTTextSidebarView") class]]) {
+    [self logMethods:view];
+    [self logProperties:view];
+    [self logSuperClasses:view];
+
+  }
   
   for (id subview in [view subviews]) {
-    [self printViewHierarchy:subview];
+    [self printViewHierarchy:subview level:(level+1)];
+  }
+}
+
+- (void)logSuperClasses:(id)object {
+  if ([object isKindOfClass:[NSObject class]]) {
+    NSLog(@"[%@]", [object class]);
+    [self logSuperClasses:class_getSuperclass([object class])];
   }
 }
 
