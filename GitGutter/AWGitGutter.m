@@ -8,7 +8,7 @@
 
 #import "AWGitGutter.h"
 #import <objc/runtime.h>
-
+#import <objc/message.h>
 
 
 static NSString * const IDESourceCodeEditorDidFinishSetupNotification = @"IDESourceCodeEditorDidFinishSetup";
@@ -77,10 +77,13 @@ static AWGitGutter *sharedPlugin;
   
   [self logMethods:[sender object]];
   
+  
   NSLog(@"------------------");
   [self printViewHierarchy:editorScrollView level:0];
   NSLog(@"==================");
 
+//  [self.hook setLineNumberFont:[NSFont fontWithName:@"Comic Sans" size:10]];
+  objc_msgSend(self.hook, NSSelectorFromString(@"setLineNumberFont:"), [NSFont fontWithName:@"Arial" size:10]);
   
   [editorTextView setAutoresizingMask:NSViewMinXMargin | NSViewMaxXMargin | NSViewWidthSizable | NSViewHeightSizable];
   
@@ -120,7 +123,7 @@ static AWGitGutter *sharedPlugin;
     [self logMethods:view];
     [self logProperties:view];
     [self logSuperClasses:view];
-
+    self.hook = view;
   }
   
   for (id subview in [view subviews]) {
