@@ -6,7 +6,8 @@
 //  Copyright (c) 2014 Allen Wu. All rights reserved.
 //
 
-#import <AppKit/AppKit.h>
+//#import <AppKit/AppKit.h>
+#import <Cocoa/Cocoa.h>
 
 @interface AWGitGutter : NSObject
 
