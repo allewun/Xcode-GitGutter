@@ -1,0 +1,290 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9FA16E8818F1257F0057BB2B /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA16E8718F1257F0057BB2B /* AppKit.framework */; };
+		9FA16E8A18F1257F0057BB2B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA16E8918F1257F0057BB2B /* Foundation.framework */; };
+		9FA16E9018F1257F0057BB2B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FA16E8E18F1257F0057BB2B /* InfoPlist.strings */; };
+		9FA16E9318F1257F0057BB2B /* AWGitGutter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA16E9218F1257F0057BB2B /* AWGitGutter.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9FA16E8418F1257F0057BB2B /* GitGutter.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitGutter.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FA16E8718F1257F0057BB2B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		9FA16E8918F1257F0057BB2B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9FA16E8D18F1257F0057BB2B /* GitGutter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GitGutter-Info.plist"; sourceTree = "<group>"; };
+		9FA16E8F18F1257F0057BB2B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9FA16E9118F1257F0057BB2B /* AWGitGutter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AWGitGutter.h; sourceTree = "<group>"; };
+		9FA16E9218F1257F0057BB2B /* AWGitGutter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AWGitGutter.m; sourceTree = "<group>"; };
+		9FA16E9418F1257F0057BB2B /* GitGutter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GitGutter-Prefix.pch"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9FA16E8118F1257F0057BB2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FA16E8818F1257F0057BB2B /* AppKit.framework in Frameworks */,
+				9FA16E8A18F1257F0057BB2B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9FA16E7B18F1257F0057BB2B = {
+			isa = PBXGroup;
+			children = (
+				9FA16E8B18F1257F0057BB2B /* GitGutter */,
+				9FA16E8618F1257F0057BB2B /* Frameworks */,
+				9FA16E8518F1257F0057BB2B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9FA16E8518F1257F0057BB2B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9FA16E8418F1257F0057BB2B /* GitGutter.xcplugin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9FA16E8618F1257F0057BB2B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9FA16E8718F1257F0057BB2B /* AppKit.framework */,
+				9FA16E8918F1257F0057BB2B /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9FA16E8B18F1257F0057BB2B /* GitGutter */ = {
+			isa = PBXGroup;
+			children = (
+				9FA16E9118F1257F0057BB2B /* AWGitGutter.h */,
+				9FA16E9218F1257F0057BB2B /* AWGitGutter.m */,
+				9FA16E8C18F1257F0057BB2B /* Supporting Files */,
+			);
+			path = GitGutter;
+			sourceTree = "<group>";
+		};
+		9FA16E8C18F1257F0057BB2B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9FA16E8D18F1257F0057BB2B /* GitGutter-Info.plist */,
+				9FA16E8E18F1257F0057BB2B /* InfoPlist.strings */,
+				9FA16E9418F1257F0057BB2B /* GitGutter-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9FA16E8318F1257F0057BB2B /* GitGutter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FA16E9718F1257F0057BB2B /* Build configuration list for PBXNativeTarget "GitGutter" */;
+			buildPhases = (
+				9FA16E8018F1257F0057BB2B /* Sources */,
+				9FA16E8118F1257F0057BB2B /* Frameworks */,
+				9FA16E8218F1257F0057BB2B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GitGutter;
+			productName = GitGutter;
+			productReference = 9FA16E8418F1257F0057BB2B /* GitGutter.xcplugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9FA16E7C18F1257F0057BB2B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = AW;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Allen Wu";
+			};
+			buildConfigurationList = 9FA16E7F18F1257F0057BB2B /* Build configuration list for PBXProject "GitGutter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9FA16E7B18F1257F0057BB2B;
+			productRefGroup = 9FA16E8518F1257F0057BB2B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9FA16E8318F1257F0057BB2B /* GitGutter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9FA16E8218F1257F0057BB2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FA16E9018F1257F0057BB2B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9FA16E8018F1257F0057BB2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FA16E9318F1257F0057BB2B /* AWGitGutter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9FA16E8E18F1257F0057BB2B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9FA16E8F18F1257F0057BB2B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9FA16E9518F1257F0057BB2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		9FA16E9618F1257F0057BB2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9FA16E9818F1257F0057BB2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(HOME)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GitGutter/GitGutter-Prefix.pch";
+				INFOPLIST_FILE = "GitGutter/GitGutter-Info.plist";
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Debug;
+		};
+		9FA16E9918F1257F0057BB2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(HOME)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GitGutter/GitGutter-Prefix.pch";
+				INFOPLIST_FILE = "GitGutter/GitGutter-Info.plist";
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9FA16E7F18F1257F0057BB2B /* Build configuration list for PBXProject "GitGutter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FA16E9518F1257F0057BB2B /* Debug */,
+				9FA16E9618F1257F0057BB2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9FA16E9718F1257F0057BB2B /* Build configuration list for PBXNativeTarget "GitGutter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9FA16E9818F1257F0057BB2B /* Debug */,
+				9FA16E9918F1257F0057BB2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9FA16E7C18F1257F0057BB2B /* Project object */;
+}
