@@ -82,32 +82,22 @@ static AWGitGutter *sharedPlugin;
   [self printViewHierarchy:editorScrollView level:0];
   NSLog(@"==================");
 
-//  [self.hook setLineNumberFont:[NSFont fontWithName:@"Comic Sans" size:10]];
   objc_msgSend(self.hook, NSSelectorFromString(@"setLineNumberFont:"), [NSFont fontWithName:@"Arial" size:10]);
+  objc_msgSend(self.hook, NSSelectorFromString(@"setSidebarWidth:"), 38.0);
+  objc_msgSend(self.hook, NSSelectorFromString(@"setFoldbarWidth:"), 17.0);
+  
+  [self logProperties:self.hook];
   
   [editorTextView setAutoresizingMask:NSViewMinXMargin | NSViewMaxXMargin | NSViewWidthSizable | NSViewHeightSizable];
   
   editorTextView.backgroundColor = [NSColor clearColor];
-  editorScrollView.backgroundColor = [NSColor darkGrayColor];
-  
-  
-  // Create gutter
-  CGFloat width = 200;
-  
-  NSRect gutterRect = NSMakeRect(editorContainerView.bounds.size.width - width,
-                                 0,
-                                 width,
-                                 editorScrollView.bounds.size.height);
-  NSView* gutterView = [[NSView alloc] initWithFrame:gutterRect];
-  gutterView.layer.backgroundColor = [NSColor redColor].CGColor;
+  editorScrollView.backgroundColor = [NSColor colorWithRed:0 green:0 blue:50.0/255.0 alpha:1.0];
   
   NSLog(@"editorDocument = %@", editorDocument);
   NSLog(@"editorContainerView = %@", editorContainerView);
   NSLog(@"editorScrollView = %@", editorScrollView);
   NSLog(@"editorTextView = %@", editorTextView);
-  NSLog(@"gutterView = %@", gutterView);
   
-  [editorContainerView addSubview:gutterView];
 }
 
 - (void)printViewHierarchy:(id)view level:(int)level {
@@ -152,12 +142,12 @@ static AWGitGutter *sharedPlugin;
 
     free(returnType);
     // self, _cmd + any others
-//    unsigned int numberOfArguments = method_getNumberOfArguments(methods[i]);
-//    for(int j=0; j<numberOfArguments; j++)
-//    {
-//      method_getArgumentType(methods[i], j, buffer, 256);
-//      NSLog(@"The type of argument %d is %s", j, buffer);
-//    }
+    unsigned int numberOfArguments = method_getNumberOfArguments(methods[i]);
+    for(int j=0; j<numberOfArguments; j++)
+    {
+      method_getArgumentType(methods[i], j, buffer, 256);
+      NSLog(@"The type of argument %d is %s", j, buffer);
+    }
   }
   free(methods);
 }
