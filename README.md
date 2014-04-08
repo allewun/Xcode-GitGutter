@@ -2,6 +2,8 @@
 
 Documenting my progress... zero experience with non-iOS Cocoa development.
 
+* 4/7/2014
+    * Tried to move the editorScrollView to the right to make room for a new sibling view (a new gutter), the frame seems to be tied to the editorContainerView, changing scrollview's frame changes the containerview's frame for some reason. Looked at SCMiniMapView.m's show/hide methods to see how they do it
 * 4/6/2014
     * Used [SCXodeMiniMap](https://github.com/stefanceriu/SCXcodeMiniMap) as reference to see how they added stuff
     * Development is annoying... build > quit Xcode > restart Xcode > look at the system log to view print statements

@@ -82,22 +82,90 @@ static AWGitGutter *sharedPlugin;
   [self printViewHierarchy:editorScrollView level:0];
   NSLog(@"==================");
 
+  
+  // hook is now DVTTextSidebarView
   objc_msgSend(self.hook, NSSelectorFromString(@"setLineNumberFont:"), [NSFont fontWithName:@"Arial" size:10]);
   objc_msgSend(self.hook, NSSelectorFromString(@"setSidebarWidth:"), 38.0);
   objc_msgSend(self.hook, NSSelectorFromString(@"setFoldbarWidth:"), 17.0);
+  objc_msgSend(self.hook, NSSelectorFromString(@"setLineNumberTextColor:"), [NSColor greenColor]);
+
+  editorContainerView.frame = (CGRect){
+    .origin.x = editorContainerView.frame.origin.x + 100,
+    .origin.y = editorContainerView.frame.origin.y + 100,
+    .size.width = editorContainerView.frame.size.width - 200,
+    .size.height = editorContainerView.frame.size.height - 200
+  };
+  
+  
+  editorScrollView.bounds = (CGRect){
+    .origin.x = editorScrollView.bounds.origin.x + 100,
+    .origin.y = editorScrollView.bounds.origin.y + 100,
+    .size = editorScrollView.bounds.size
+//    .size.width = editorScrollView.frame.size.width - 200,
+//    .size.height = editorScrollView.frame.size.height - 200
+  };
+  
+  
+  [self dumpInfo:[self.hook class]];
+  
+  [self logProperties:editorTextView];
+  
+
   
   [self logProperties:self.hook];
+
   
   [editorTextView setAutoresizingMask:NSViewMinXMargin | NSViewMaxXMargin | NSViewWidthSizable | NSViewHeightSizable];
   
   editorTextView.backgroundColor = [NSColor clearColor];
-  editorScrollView.backgroundColor = [NSColor colorWithRed:0 green:0 blue:50.0/255.0 alpha:1.0];
+  editorScrollView.backgroundColor = [NSColor colorWithRed:0 green:0 blue:1 alpha:1.0];
   
   NSLog(@"editorDocument = %@", editorDocument);
   NSLog(@"editorContainerView = %@", editorContainerView);
   NSLog(@"editorScrollView = %@", editorScrollView);
   NSLog(@"editorTextView = %@", editorTextView);
   
+}
+
+-(void)dumpInfo:(Class)clazz
+{
+  u_int count;
+  
+  Ivar* ivars = class_copyIvarList(clazz, &count);
+  NSMutableArray* ivarArray = [NSMutableArray arrayWithCapacity:count];
+  for (int i = 0; i < count ; i++)
+  {
+    const char* ivarName = ivar_getName(ivars[i]);
+    [ivarArray addObject:[NSString  stringWithCString:ivarName encoding:NSUTF8StringEncoding]];
+  }
+  free(ivars);
+  
+  objc_property_t* properties = class_copyPropertyList(clazz, &count);
+  NSMutableArray* propertyArray = [NSMutableArray arrayWithCapacity:count];
+  for (int i = 0; i < count ; i++)
+  {
+    const char* propertyName = property_getName(properties[i]);
+    [propertyArray addObject:[NSString  stringWithCString:propertyName encoding:NSUTF8StringEncoding]];
+  }
+  free(properties);
+  
+  Method* methods = class_copyMethodList(clazz, &count);
+  NSMutableArray* methodArray = [NSMutableArray arrayWithCapacity:count];
+  for (int i = 0; i < count ; i++)
+  {
+    SEL selector = method_getName(methods[i]);
+    const char* methodName = sel_getName(selector);
+    [methodArray addObject:[NSString  stringWithCString:methodName encoding:NSUTF8StringEncoding]];
+  }
+  free(methods);
+  
+  NSDictionary* classDump = [NSDictionary dictionaryWithObjectsAndKeys:
+                             ivarArray, @"ivars",
+                             propertyArray, @"properties",
+                             methodArray, @"methods",
+                             nil];
+  
+  NSLog(@"%@", classDump);
 }
 
 - (void)printViewHierarchy:(id)view level:(int)level {
