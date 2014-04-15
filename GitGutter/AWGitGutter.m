@@ -43,6 +43,7 @@ static AWGitGutter *sharedPlugin;
         self.bundle = plugin;
       
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDidFinishSetup:) name:IDESourceCodeEditorDidFinishSetupNotification object:nil];
+//      [[NSNotificationCenter defaultCenter] addObserver:self] selector:@selector(notif:) name:NSTextViewWillChangeNotifyingTextViewNotification object:nil];
     }
     return self;
 }
@@ -67,6 +68,8 @@ static AWGitGutter *sharedPlugin;
     return;
   }
   
+  
+  
   NSLog(@"******* [sender object] = %@", [sender object]);
   
   /* Get Editor Components */
@@ -89,21 +92,22 @@ static AWGitGutter *sharedPlugin;
   objc_msgSend(self.hook, NSSelectorFromString(@"setFoldbarWidth:"), 17.0);
   objc_msgSend(self.hook, NSSelectorFromString(@"setLineNumberTextColor:"), [NSColor greenColor]);
 
-  editorContainerView.frame = (CGRect){
-    .origin.x = editorContainerView.frame.origin.x + 100,
-    .origin.y = editorContainerView.frame.origin.y + 100,
-    .size.width = editorContainerView.frame.size.width - 200,
-    .size.height = editorContainerView.frame.size.height - 200
-  };
-  
-  
-  editorScrollView.bounds = (CGRect){
-    .origin.x = editorScrollView.bounds.origin.x + 100,
-    .origin.y = editorScrollView.bounds.origin.y + 100,
-    .size = editorScrollView.bounds.size
-//    .size.width = editorScrollView.frame.size.width - 200,
-//    .size.height = editorScrollView.frame.size.height - 200
-  };
+//  editorContainerView.frame = (CGRect){
+//    .origin.x = editorContainerView.frame.origin.x + 100,
+//    .origin.y = editorContainerView.frame.origin.y + 100,
+//    .size.width = editorContainerView.frame.size.width - 200,
+//    .size.height = editorContainerView.frame.size.height - 200
+//  };
+//  
+//  
+//  
+//  editorScrollView.bounds = (CGRect){
+//    .origin.x = editorScrollView.bounds.origin.x + 100,
+//    .origin.y = editorScrollView.bounds.origin.y + 100,
+//    .size = editorScrollView.bounds.size
+////    .size.width = editorScrollView.frame.size.width - 200,
+////    .size.height = editorScrollView.frame.size.height - 200
+//  };
   
   
   [self dumpInfo:[self.hook class]];

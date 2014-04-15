@@ -7,13 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F73D5B618FD0FE60064E926 /* DVTFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F73D5B518FD0FE60064E926 /* DVTFoundation.framework */; };
+		9F73D5BC18FD11BE0064E926 /* DVTTextSidebarView+Swizzled.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F73D5BB18FD11BE0064E926 /* DVTTextSidebarView+Swizzled.m */; };
+		9F73D5BE18FD126C0064E926 /* DVTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F73D5BD18FD126C0064E926 /* DVTKit.framework */; };
 		9FA16E8818F1257F0057BB2B /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA16E8718F1257F0057BB2B /* AppKit.framework */; };
 		9FA16E8A18F1257F0057BB2B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA16E8918F1257F0057BB2B /* Foundation.framework */; };
 		9FA16E9018F1257F0057BB2B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FA16E8E18F1257F0057BB2B /* InfoPlist.strings */; };
 		9FA16E9318F1257F0057BB2B /* AWGitGutter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA16E9218F1257F0057BB2B /* AWGitGutter.m */; };
+		9FC486DE18FD14A900BE7344 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC486DD18FD14A900BE7344 /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F73D5B518FD0FE60064E926 /* DVTFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTFoundation.framework; path = ../../../Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework; sourceTree = "<group>"; };
+		9F73D5B718FD106D0064E926 /* AWDVTShit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWDVTShit.h; sourceTree = "<group>"; };
+		9F73D5BA18FD11BE0064E926 /* DVTTextSidebarView+Swizzled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DVTTextSidebarView+Swizzled.h"; sourceTree = "<group>"; };
+		9F73D5BB18FD11BE0064E926 /* DVTTextSidebarView+Swizzled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DVTTextSidebarView+Swizzled.m"; sourceTree = "<group>"; };
+		9F73D5BD18FD126C0064E926 /* DVTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTKit.framework; path = ../../../Applications/Xcode.app/Contents/SharedFrameworks/DVTKit.framework; sourceTree = "<group>"; };
 		9FA16E8418F1257F0057BB2B /* GitGutter.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitGutter.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA16E8718F1257F0057BB2B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		9FA16E8918F1257F0057BB2B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -22,6 +31,7 @@
 		9FA16E9118F1257F0057BB2B /* AWGitGutter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AWGitGutter.h; sourceTree = "<group>"; };
 		9FA16E9218F1257F0057BB2B /* AWGitGutter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AWGitGutter.m; sourceTree = "<group>"; };
 		9FA16E9418F1257F0057BB2B /* GitGutter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GitGutter-Prefix.pch"; sourceTree = "<group>"; };
+		9FC486DD18FD14A900BE7344 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +39,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FC486DE18FD14A900BE7344 /* Cocoa.framework in Frameworks */,
+				9F73D5BE18FD126C0064E926 /* DVTKit.framework in Frameworks */,
+				9F73D5B618FD0FE60064E926 /* DVTFoundation.framework in Frameworks */,
 				9FA16E8818F1257F0057BB2B /* AppKit.framework in Frameworks */,
 				9FA16E8A18F1257F0057BB2B /* Foundation.framework in Frameworks */,
 			);
@@ -57,6 +70,9 @@
 		9FA16E8618F1257F0057BB2B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9FC486DD18FD14A900BE7344 /* Cocoa.framework */,
+				9F73D5BD18FD126C0064E926 /* DVTKit.framework */,
+				9F73D5B518FD0FE60064E926 /* DVTFoundation.framework */,
 				9FA16E8718F1257F0057BB2B /* AppKit.framework */,
 				9FA16E8918F1257F0057BB2B /* Foundation.framework */,
 			);
@@ -68,6 +84,9 @@
 			children = (
 				9FA16E9118F1257F0057BB2B /* AWGitGutter.h */,
 				9FA16E9218F1257F0057BB2B /* AWGitGutter.m */,
+				9F73D5B718FD106D0064E926 /* AWDVTShit.h */,
+				9F73D5BA18FD11BE0064E926 /* DVTTextSidebarView+Swizzled.h */,
+				9F73D5BB18FD11BE0064E926 /* DVTTextSidebarView+Swizzled.m */,
 				9FA16E8C18F1257F0057BB2B /* Supporting Files */,
 			);
 			path = GitGutter;
@@ -146,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F73D5BC18FD11BE0064E926 /* DVTTextSidebarView+Swizzled.m in Sources */,
 				9FA16E9318F1257F0057BB2B /* AWGitGutter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,6 +260,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = "$(HOME)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/SharedFrameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GitGutter/GitGutter-Prefix.pch";
 				INFOPLIST_FILE = "GitGutter/GitGutter-Info.plist";
@@ -255,6 +279,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = "$(HOME)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/SharedFrameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GitGutter/GitGutter-Prefix.pch";
 				INFOPLIST_FILE = "GitGutter/GitGutter-Info.plist";
@@ -283,6 +311,7 @@
 				9FA16E9918F1257F0057BB2B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
