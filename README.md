@@ -2,6 +2,9 @@
 
 Documenting my progress... zero experience with non-iOS Cocoa development.
 
+* 4/14/2014
+    * Swizzled some methods of `DVTTextSidebarView` to see what can be modified. Doesn't look like I can do much, next steps: retry to add a new view (NSRuler) next to the original gutter.
+    * Found [Xcode Explorer](https://github.com/edwardaux/XcodeExplorer), could be useful
 * 4/7/2014
     * Tried to move the editorScrollView to the right to make room for a new sibling view (a new gutter), the frame seems to be tied to the editorContainerView, changing scrollview's frame changes the containerview's frame for some reason. Looked at SCMiniMapView.m's show/hide methods to see how they do it
 * 4/6/2014

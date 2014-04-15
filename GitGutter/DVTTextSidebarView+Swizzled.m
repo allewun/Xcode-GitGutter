@@ -22,8 +22,8 @@
     // When swizzling a class method, use the following:
     // Class class = object_getClass((id)self);
     
-    SEL originalSelector = @selector(_drawLineNumbersInSidebarRect:foldedIndexes:count:linesToInvert:linesToReplace:getParaRectBlock:);
-    SEL swizzledSelector = @selector(xxx_drawLineNumbersInSidebarRect:foldedIndexes:count:linesToInvert:linesToReplace:getParaRectBlock:);
+    SEL originalSelector = @selector(annotationAtSidebarPoint:);
+    SEL swizzledSelector = @selector(xxx_annotationAtSidebarPoint:);
     
     Method originalMethod = class_getInstanceMethod(class, originalSelector);
     Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
@@ -46,13 +46,13 @@
 }
 
 - (unsigned long long)xxx_lineNumberForPoint:(CGPoint)point {
-  unsigned long long value = [self xxx_lineNumberForPoint:point];
+  unsigned long long value = 31;//[self xxx_lineNumberForPoint:point];
 
   NSLog(@"point = %@", NSStringFromPoint(NSPointFromCGPoint(point)));
   NSLog(@"value = %llu", value);
 
   
-  return value;
+  return 31;
 }
 
 - (void)xxx_drawLineNumbersInSidebarRect:(struct CGRect)arg1
@@ -78,83 +78,18 @@
                            linesToInvert:arg4
                           linesToReplace:arg5
                         getParaRectBlock:arg6];
+  31;
+}
+
+- (id)xxx_annotationAtSidebarPoint:(CGPoint)point {
+  id idk = [self xxx_annotationAtSidebarPoint:point];
+  
+  NSLog(@"idk = %@", [idk class]);
+  
+  return idk;
   
 }
 
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
