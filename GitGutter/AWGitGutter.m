@@ -122,7 +122,7 @@ static AWGitGutter *sharedPlugin;
   [editorTextView setAutoresizingMask:NSViewMinXMargin | NSViewMaxXMargin | NSViewWidthSizable | NSViewHeightSizable];
   
   editorTextView.backgroundColor = [NSColor clearColor];
-  editorScrollView.backgroundColor = [NSColor colorWithRed:0 green:0 blue:1 alpha:1.0];
+  editorScrollView.backgroundColor = [NSColor colorWithRed:0 green:0 blue:0 alpha:1.0];
   
   NSLog(@"editorDocument = %@", editorDocument);
   NSLog(@"editorContainerView = %@", editorContainerView);

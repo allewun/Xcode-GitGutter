@@ -12,6 +12,8 @@
 
 @implementation DVTTextSidebarView (Swizzled)
 
+
+
 + (void)load {
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
@@ -20,8 +22,8 @@
     // When swizzling a class method, use the following:
     // Class class = object_getClass((id)self);
     
-    SEL originalSelector = @selector(lineNumberForPoint:);
-    SEL swizzledSelector = @selector(xxx_lineNumberForPoint:);
+    SEL originalSelector = @selector(_drawLineNumbersInSidebarRect:foldedIndexes:count:linesToInvert:linesToReplace:getParaRectBlock:);
+    SEL swizzledSelector = @selector(xxx_drawLineNumbersInSidebarRect:foldedIndexes:count:linesToInvert:linesToReplace:getParaRectBlock:);
     
     Method originalMethod = class_getInstanceMethod(class, originalSelector);
     Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
@@ -45,7 +47,7 @@
 
 - (unsigned long long)xxx_lineNumberForPoint:(CGPoint)point {
   unsigned long long value = [self xxx_lineNumberForPoint:point];
-  NSLog(@"swizzled");
+
   NSLog(@"point = %@", NSStringFromPoint(NSPointFromCGPoint(point)));
   NSLog(@"value = %llu", value);
 
@@ -53,6 +55,106 @@
   return value;
 }
 
+- (void)xxx_drawLineNumbersInSidebarRect:(struct CGRect)arg1
+                           foldedIndexes:(unsigned long long *)arg2
+                                   count:(unsigned long long)arg3
+                           linesToInvert:(id)arg4
+                          linesToReplace:(id)arg5
+                        getParaRectBlock:(id)arg6 {
+
+  NSLog(@"******************************");
+  NSLog(@"rect           = %@", NSStringFromRect(NSRectFromCGRect(arg1)));
+  NSLog(@"foldedIndexes  = %llu", *arg2);
+  NSLog(@"count          = %llu", arg3);
+  NSLog(@"linesToInvert  = %@", arg4);
+  NSLog(@"linesToReplace = %@", arg5);
+  NSLog(@"paraRectBlock  = %@", arg6);
+  NSLog(@"******************************");
+  
+  
+  [self xxx_drawLineNumbersInSidebarRect:arg1
+                           foldedIndexes:arg2
+                                   count:arg3
+                           linesToInvert:arg4
+                          linesToReplace:arg5
+                        getParaRectBlock:arg6];
+  
+}
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
