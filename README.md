@@ -2,6 +2,8 @@
 
 Documenting my progress... zero experience with non-iOS Cocoa development.
 
+* 4/22/2014
+    * Added `AWRulerView` to the right of the line numbers. Next: try to figure out how to use the NSRuler properly (hooking up its `clientView` property to the source code view). 
 * 4/14/2014
     * Swizzled some methods of `DVTTextSidebarView` to see what can be modified. Doesn't look like I can do much, next steps: retry to add a new view (NSRuler) next to the original gutter.
     * Found [Xcode Explorer](https://github.com/edwardaux/XcodeExplorer), could be useful

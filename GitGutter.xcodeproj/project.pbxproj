@@ -15,6 +15,7 @@
 		9FA16E9018F1257F0057BB2B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9FA16E8E18F1257F0057BB2B /* InfoPlist.strings */; };
 		9FA16E9318F1257F0057BB2B /* AWGitGutter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA16E9218F1257F0057BB2B /* AWGitGutter.m */; };
 		9FC486DE18FD14A900BE7344 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC486DD18FD14A900BE7344 /* Cocoa.framework */; };
+		9FD690BC19077DF8009AFDB3 /* AWRulerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD690BB19077DF8009AFDB3 /* AWRulerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		9FA16E9218F1257F0057BB2B /* AWGitGutter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AWGitGutter.m; sourceTree = "<group>"; };
 		9FA16E9418F1257F0057BB2B /* GitGutter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GitGutter-Prefix.pch"; sourceTree = "<group>"; };
 		9FC486DD18FD14A900BE7344 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		9FD690BA19077DF8009AFDB3 /* AWRulerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWRulerView.h; sourceTree = "<group>"; };
+		9FD690BB19077DF8009AFDB3 /* AWRulerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWRulerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 				9FA16E9118F1257F0057BB2B /* AWGitGutter.h */,
 				9FA16E9218F1257F0057BB2B /* AWGitGutter.m */,
 				9F73D5B718FD106D0064E926 /* AWDVTShit.h */,
+				9FD690BA19077DF8009AFDB3 /* AWRulerView.h */,
+				9FD690BB19077DF8009AFDB3 /* AWRulerView.m */,
 				9F73D5BA18FD11BE0064E926 /* DVTTextSidebarView+Swizzled.h */,
 				9F73D5BB18FD11BE0064E926 /* DVTTextSidebarView+Swizzled.m */,
 				9FA16E8C18F1257F0057BB2B /* Supporting Files */,
@@ -165,6 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FD690BC19077DF8009AFDB3 /* AWRulerView.m in Sources */,
 				9F73D5BC18FD11BE0064E926 /* DVTTextSidebarView+Swizzled.m in Sources */,
 				9FA16E9318F1257F0057BB2B /* AWGitGutter.m in Sources */,
 			);

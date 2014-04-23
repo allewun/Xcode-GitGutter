@@ -9,6 +9,7 @@
 #import "AWGitGutter.h"
 #import <objc/runtime.h>
 #import <objc/message.h>
+#import "AWRulerView.h"
 
 
 static NSString * const IDESourceCodeEditorDidFinishSetupNotification = @"IDESourceCodeEditorDidFinishSetup";
@@ -21,6 +22,7 @@ static AWGitGutter *sharedPlugin;
 @interface AWGitGutter()
 @property (nonatomic, strong) NSBundle *bundle;
 @property (nonatomic, strong) id hook;
+@property (nonatomic, strong) id hook2;
 @end
 
 @implementation AWGitGutter
@@ -76,22 +78,42 @@ static AWGitGutter *sharedPlugin;
   NSDocument *editorDocument      = [[sender object] performSelector:@selector(sourceCodeDocument)];
   NSView *editorContainerView     = [[sender object] performSelector:@selector(containerView)];
   NSScrollView *editorScrollView  = [[sender object] performSelector:@selector(scrollView)];
+  
+  NSLog(@"scrollView address = %@", editorScrollView);
+
+  
   NSTextView *editorTextView      = [[sender object] performSelector:@selector(textView)];
   
-  [self logMethods:[sender object]];
+//  [self logMethods:[sender object]];
   
   
   NSLog(@"------------------");
   [self printViewHierarchy:editorScrollView level:0];
   NSLog(@"==================");
-
   
   // hook is now DVTTextSidebarView
   objc_msgSend(self.hook, NSSelectorFromString(@"setLineNumberFont:"), [NSFont fontWithName:@"Arial" size:10]);
-  objc_msgSend(self.hook, NSSelectorFromString(@"setSidebarWidth:"), 38.0);
-  objc_msgSend(self.hook, NSSelectorFromString(@"setFoldbarWidth:"), 17.0);
+  objc_msgSend(self.hook, NSSelectorFromString(@"setSidebarWidth:"), 28.0);
+  objc_msgSend(self.hook, NSSelectorFromString(@"setFoldbarWidth:"), 7.0);
   objc_msgSend(self.hook, NSSelectorFromString(@"setLineNumberTextColor:"), [NSColor greenColor]);
 
+  // hook2 is DVTSourceTextView
+
+  [self dumpInfo:[self.hook2 class]];
+  
+//  NSLog(@"hook2's superclasses:");
+//  [self logSuperClasses:self.hook2];
+  
+  [((NSClipView *)self.hook2) setFrameOrigin:NSMakePoint(30, 50)];
+  
+  NSScrollView* box = [[NSScrollView alloc] initWithFrame:NSMakeRect(((NSView*)self.hook).frame.size.width, 0, 5, ((NSView*)self.hook).frame.size.height)];
+  box.backgroundColor = [NSColor colorWithRed:0 green:1 blue:0 alpha:0.5];
+  
+  AWRulerView* box2 = [[AWRulerView alloc] init];
+  box2.frame = NSMakeRect(((NSView*)self.hook).frame.size.width, 0, 5, ((NSView*)self.hook).frame.size.height);
+  
+  [editorScrollView addSubview:box2];
+  
 //  editorContainerView.frame = (CGRect){
 //    .origin.x = editorContainerView.frame.origin.x + 100,
 //    .origin.y = editorContainerView.frame.origin.y + 100,
@@ -112,17 +134,22 @@ static AWGitGutter *sharedPlugin;
   
   [self dumpInfo:[self.hook class]];
   
-  [self logProperties:editorTextView];
+  NSLog(@"clientview??? = %@", [self.hook clientView]);
   
-
-  
-  [self logProperties:self.hook];
+//
+//  [self logProperties:editorTextView];
+//  
+//
+//  
+//  [self logProperties:self.hook];
 
   
   [editorTextView setAutoresizingMask:NSViewMinXMargin | NSViewMaxXMargin | NSViewWidthSizable | NSViewHeightSizable];
   
   editorTextView.backgroundColor = [NSColor clearColor];
-  editorScrollView.backgroundColor = [NSColor colorWithRed:0 green:0 blue:0 alpha:1.0];
+  editorScrollView.backgroundColor = [NSColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+  
+//  [editorTextView setFrame:NSMakeRect(100, 100, 100, 100)];
   
   NSLog(@"editorDocument = %@", editorDocument);
   NSLog(@"editorContainerView = %@", editorContainerView);
@@ -182,10 +209,14 @@ static AWGitGutter *sharedPlugin;
   NSLog(@"%@ (%@) %@", indentation, [view class], [view description]);
   
   if ([view isMemberOfClass:[NSClassFromString(@"DVTTextSidebarView") class]]) {
-    [self logMethods:view];
-    [self logProperties:view];
-    [self logSuperClasses:view];
+//    [self logMethods:view];
+//    [self logProperties:view];
+//    [self logSuperClasses:view];
     self.hook = view;
+  }
+  else if ([view isMemberOfClass:[NSClassFromString(@"DVTSourceTextView") class]]) {
+    self.hook2 = view;
+    NSLog(@"caught source text view");
   }
   
   for (id subview in [view subviews]) {

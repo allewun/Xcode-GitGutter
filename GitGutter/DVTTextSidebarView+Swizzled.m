@@ -78,7 +78,6 @@
                            linesToInvert:arg4
                           linesToReplace:arg5
                         getParaRectBlock:arg6];
-  31;
 }
 
 - (id)xxx_annotationAtSidebarPoint:(CGPoint)point {
