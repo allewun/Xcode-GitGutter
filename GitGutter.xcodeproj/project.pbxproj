@@ -117,6 +117,7 @@
 				9FA16E8018F1257F0057BB2B /* Sources */,
 				9FA16E8118F1257F0057BB2B /* Frameworks */,
 				9FA16E8218F1257F0057BB2B /* Resources */,
+				9F667EE11928895700646B48 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -164,6 +165,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9F667EE11928895700646B48 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\nkillall -9 Xcode\nsleep 0.3\nrm -fR ~/Library/Developer/Xcode/DerivedData\nopen /Applications/Xcode.app";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9FA16E8018F1257F0057BB2B /* Sources */ = {
