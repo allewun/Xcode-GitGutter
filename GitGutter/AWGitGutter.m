@@ -104,17 +104,8 @@ static AWGitGutter *sharedPlugin;
 //  NSLog(@"hook2's superclasses:");
 //  [self logSuperClasses:self.hook2];
   
-  [((NSClipView *)self.hook2) setFrameOrigin:NSMakePoint(30, 50)];
-  
-  NSScrollView* box = [[NSScrollView alloc] initWithFrame:NSMakeRect(((NSView*)self.hook).frame.size.width, 0, 5, ((NSView*)self.hook).frame.size.height)];
-  box.backgroundColor = [NSColor colorWithRed:0 green:1 blue:0 alpha:0.5];
-  
-  AWRulerView* box2 = [[AWRulerView alloc] init];
-//  AWRulerView* box2 = [[AWRulerView alloc] initWithScrollView:editorScrollView orientation:NSVerticalRuler];
-  box2.frame = NSMakeRect(((NSView*)self.hook).frame.size.width, 0, 5, ((NSView*)self.hook).frame.size.height);
-  
-  [editorScrollView addSubview:box2];
-  
+
+
 //  editorContainerView.frame = (CGRect){
 //    .origin.x = editorContainerView.frame.origin.x + 100,
 //    .origin.y = editorContainerView.frame.origin.y + 100,
@@ -210,9 +201,12 @@ static AWGitGutter *sharedPlugin;
   NSLog(@"%@ (%@) %@", indentation, [view class], [view description]);
   
   if ([view isMemberOfClass:[NSClassFromString(@"DVTTextSidebarView") class]]) {
-//    [self logMethods:view];
-//    [self logProperties:view];
-//    [self logSuperClasses:view];
+    NSLog(@">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    [self logMethods:view];
+    [self logProperties:view];
+    [self logSuperClasses:view];
+    
+    NSLog(@"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
     self.hook = view;
   }
   else if ([view isMemberOfClass:[NSClassFromString(@"DVTSourceTextView") class]]) {
@@ -226,10 +220,42 @@ static AWGitGutter *sharedPlugin;
 }
 
 - (void)logSuperClasses:(id)object {
+
   if ([object isKindOfClass:[NSObject class]]) {
-    NSLog(@"[%@]", [object class]);
+    NSLog(@"  [%@]", [object class]);
     [self logSuperClasses:class_getSuperclass([object class])];
   }
+}
+
+// https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
+- (NSString *)meaningOfObjCTypeEncoding:(char *)type {
+  NSString* meaning;
+  
+  switch (type[0]) {
+    case 'c': meaning = @"char"; break;
+    case 'i': meaning = @"int"; break;
+    case 's': meaning = @"short"; break;
+    case 'l': meaning = @"long"; break;
+    case 'q': meaning = @"long long"; break;
+    case 'C': meaning = @"unsigned char"; break;
+    case 'I': meaning = @"unsigned int"; break;
+    case 'S': meaning = @"unsigned short"; break;
+    case 'L': meaning = @"unsigned long"; break;
+    case 'Q': meaning = @"unsigned long long"; break;
+    case 'f': meaning = @"float"; break;
+    case 'd': meaning = @"double"; break;
+    case 'B': meaning = @"C++ bool"; break;
+    case 'v': meaning = @"void"; break;
+    case '*': meaning = @"char *"; break;
+    case '@': meaning = @"id"; break;
+    case '#': meaning = @"Class"; break;
+    case ':': meaning = @"SEL"; break;
+    case '^': meaning = @"pointer"; break;
+    case '?': meaning = @"unknown, function pointer?"; break;
+    default: meaning = [NSString stringWithFormat:@"%s", type];
+  }
+  
+  return meaning;
 }
 
 - (void)logMethods:(id)object {
@@ -242,7 +268,7 @@ static AWGitGutter *sharedPlugin;
     char buffer[256];
     SEL name = method_getName(methods[i]);
     char *returnType = method_copyReturnType(methods[i]);
-    NSLog(@"Method: (%s) %@", returnType, NSStringFromSelector(name));
+    NSLog(@"Method: (%@) %@", [self meaningOfObjCTypeEncoding:returnType], NSStringFromSelector(name));
 
     free(returnType);
     // self, _cmd + any others
@@ -250,7 +276,10 @@ static AWGitGutter *sharedPlugin;
     for(int j=0; j<numberOfArguments; j++)
     {
       method_getArgumentType(methods[i], j, buffer, 256);
-      NSLog(@"The type of argument %d is %s", j, buffer);
+      
+      
+      
+      NSLog(@"  The type of argument %d is %@", j, [self meaningOfObjCTypeEncoding:buffer]);
     }
   }
   free(methods);
@@ -259,7 +288,7 @@ static AWGitGutter *sharedPlugin;
 
 - (void) logProperties:(id)object {
  
- NSLog(@"----------------------------------------------- Properties for object %@", object);
+ NSLog(@"-----------------------------------------------\nProperties for object %@", object);
  
  @autoreleasepool {
    unsigned int numberOfProperties = 0;
