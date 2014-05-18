@@ -110,6 +110,7 @@ static AWGitGutter *sharedPlugin;
   box.backgroundColor = [NSColor colorWithRed:0 green:1 blue:0 alpha:0.5];
   
   AWRulerView* box2 = [[AWRulerView alloc] init];
+//  AWRulerView* box2 = [[AWRulerView alloc] initWithScrollView:editorScrollView orientation:NSVerticalRuler];
   box2.frame = NSMakeRect(((NSView*)self.hook).frame.size.width, 0, 5, ((NSView*)self.hook).frame.size.height);
   
   [editorScrollView addSubview:box2];
