@@ -204,6 +204,7 @@ static AWGitGutter *sharedPlugin;
     NSLog(@">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
     [self logMethods:view];
     [self logProperties:view];
+    [self logIvars:view];
     [self logSuperClasses:view];
     
     NSLog(@"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
@@ -285,10 +286,21 @@ static AWGitGutter *sharedPlugin;
   free(methods);
 }
 
+- (void)logIvars:(id)object {
+   NSLog(@"----------------------------------------------- Ivars for object %@:", object);
+  
+  unsigned int count;
+  Ivar *vars = class_copyIvarList([object class], &count);
+  for (NSUInteger i=0; i<count; i++) {
+    Ivar var = vars[i];
+    NSLog(@"%s (%@)", ivar_getName(var), [self meaningOfObjCTypeEncoding:ivar_getTypeEncoding(var)]);
+  }
+  NSLog(@"-----------------------------------------------");
+}
 
 - (void) logProperties:(id)object {
  
- NSLog(@"-----------------------------------------------\nProperties for object %@", object);
+ NSLog(@"------------------------------------------------ Properties for object %@:", object);
  
  @autoreleasepool {
    unsigned int numberOfProperties = 0;
