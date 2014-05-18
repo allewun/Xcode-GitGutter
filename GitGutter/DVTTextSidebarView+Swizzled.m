@@ -22,8 +22,8 @@
     // When swizzling a class method, use the following:
     // Class class = object_getClass((id)self);
     
-    SEL originalSelector = @selector(annotationAtSidebarPoint:);
-    SEL swizzledSelector = @selector(xxx_annotationAtSidebarPoint:);
+    SEL originalSelector = @selector(lineNumberTextColor);
+    SEL swizzledSelector = @selector(xxx_lineNumberTextColor);
     
     Method originalMethod = class_getInstanceMethod(class, originalSelector);
     Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
@@ -87,6 +87,13 @@
   
   return idk;
   
+}
+
+- (NSColor*)xxx_lineNumberTextColor {
+  id x = [self xxx_lineNumberTextColor];
+  NSLog(@"color = %@", x);
+  NSLog(@"Show stack trace: %@", [NSThread callStackSymbols]);
+  return x;
 }
 
 @end
