@@ -2,6 +2,8 @@
 
 Documenting my progress... zero experience with non-iOS Cocoa development.
 
+* 7/27/2014
+    * Looks like someone got there first... check out [GitDiff](https://github.com/johnno1962/GitDiff)!
 * 4/22/2014
     * Added `AWRulerView` to the right of the line numbers. Next: try to figure out how to use the NSRuler properly (hooking up its `clientView` property to the source code view). 
 * 4/14/2014
